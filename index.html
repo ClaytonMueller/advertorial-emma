@@ -8,7 +8,7 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>Marca brasileira chama atenção ao oferecer bolsas de couro legítimo com design sofisticado por uma fração do preço das grandes grifes</title>
+  <title>Notícia - Marca brasileira chama atenção ao oferecer bolsas de couro legítimo com design sofisticado por uma fração do preço das grandes grifes</title>
 
   <style>
     /* ===========================
@@ -387,21 +387,20 @@
     }
 
     .comment-avatar {
-      width: 42px;
-      min-width: 42px;
-      height: 42px;
-
+      width: 40px;
+      min-width: 40px;
+      height: 40px;
       border-radius: 50%;
-
+      overflow: hidden;
       background: #e1e1e1;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+    }
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      font-size: 15px;
-      font-weight: 700;
-      color: #555;
+    .comment-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
     }
 
     .comment-content {
@@ -621,7 +620,7 @@
       <div class="article-info">
 
         <div class="article-meta">
-          Por <strong>Redação</strong> | Atualizado hoje às 14h32
+          Por <strong>Redação</strong> | <span id="article-updated">Atualizado hoje às 14h32</span>
         </div>
 
         <div class="share-buttons">
@@ -918,7 +917,7 @@
         <div class="cta-wrap">
 
           <a
-            href="https://emmaleblanc.com.br/collections/bolsas-de-couro-legitimo"
+            href="https://emmaleblanc.com.br/collections/bolsas-de-couro-legitimo?utm_source=mgid"
             class="cta-button"
             target="_blank"
             rel="noopener noreferrer"
@@ -1076,7 +1075,7 @@
         <div class="comment">
 
           <div class="comment-avatar">
-            PM
+            <img src="images/pm.jpeg" alt="Patricia Martins">
           </div>
 
           <div class="comment-content">
@@ -1110,7 +1109,7 @@
         <div class="comment">
 
           <div class="comment-avatar">
-            RS
+            <img src="images/rs.jpeg" alt="Rafael Souza">
           </div>
 
           <div class="comment-content">
@@ -1143,7 +1142,7 @@
         <div class="comment">
 
           <div class="comment-avatar">
-            JC
+            <img src="images/jc.jpeg" alt="Juliana Costa">
           </div>
 
           <div class="comment-content">
@@ -1176,7 +1175,7 @@
         <div class="comment">
 
           <div class="comment-avatar">
-            DB
+            <img src="images/db.jpeg" alt="Daniela Borges">
           </div>
 
           <div class="comment-content">
@@ -1209,7 +1208,7 @@
         <div class="comment reply">
 
           <div class="comment-avatar">
-            RC
+            <img src="images/rc.jpeg" alt="Renata Carvalho">
           </div>
 
           <div class="comment-content">
@@ -1270,6 +1269,33 @@
 
   </footer>
 
+
+  <script>
+    (function () {
+      var el = document.getElementById("article-updated");
+      if (!el) return;
+
+      var now = new Date();
+
+      try {
+        var today = new Intl.DateTimeFormat("en-CA", {
+          timeZone: "America/Sao_Paulo",
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit"
+        }).format(now);
+
+        now = new Date(today + "T12:00:00");
+      } catch (e) {}
+
+      now.setDate(now.getDate() - 1);
+
+      var day = ("0" + now.getDate()).slice(-2);
+      var month = ("0" + (now.getMonth() + 1)).slice(-2);
+
+      el.textContent = "Última atualização dia " + day + "/" + month + " às 14h32";
+    })();
+  </script>
 
 </body>
 </html>
